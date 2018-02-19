@@ -1,0 +1,20 @@
+ul.fpcs-wpcm-rc-list {
+   padding: 0;
+   margin: 0;
+   list-style: none;
+}
+ul.fpcs-wpcm-rc-list li {
+   display: block;
+}
+ul.fpcs-wpcm-rc-list li a.fpcs-wpcm-rc-thumb {
+   float: left;
+   display: block;
+   outline: 0;
+}
+ul.fpcs-wpcm-rc-list li a.fpcs-wpcm-rc-thumb:hover {
+   text-decoration: none;
+}
+ul.fpcs-wpcm-rc-list li a.fpcs-wpcm-rc-thumb img {
+   display: block;
+   outline: 0;
+}
