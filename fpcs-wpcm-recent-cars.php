@@ -104,7 +104,7 @@ class FPCS_WPCM_Recent_Cars extends WP_Widget {
 		}
 
 		ob_start();
-		include( plugin_dir_path( __FILE__ ) . 'view-widget.php' );
+      include( plugin_dir_path( __FILE__ ) . 'view-widget.php' );
 		$widget_string .= ob_get_clean();
 		$widget_string .= $after_widget;
 
@@ -128,10 +128,9 @@ class FPCS_WPCM_Recent_Cars extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		$instance = $old_instance;
-
-		$instance['number_cars'] = intval( trim( $new_instance['number_cars'] ) );
-		$instance['enqueue_style'] = ! empty( $new_instance['enqueue_style'] );
+      $number = intval( trim( $new_instance['number_cars'] ) );
+		$instance['number_cars'] = !empty( $number ) ? $number : 5;
+		$instance['enqueue_style'] = !empty( $new_instance['enqueue_style'] ) ? true : false;
 		$instance['title'] = strip_tags( trim( $new_instance['title'] ) );
 
 		return $instance;
@@ -157,7 +156,7 @@ class FPCS_WPCM_Recent_Cars extends WP_Widget {
 		extract($instance);
 
 		// Display the admin form
-		include( plugin_dir_path(__FILE__) . 'view-admin.php' );
+      include( plugin_dir_path(__FILE__) . 'view-admin.php' );
 
 	}
 
@@ -171,11 +170,15 @@ class FPCS_WPCM_Recent_Cars extends WP_Widget {
 	public function register_widget_styles() {
 
 		$instance = $this->get_settings()[ str_replace( $this->widget_slug. '-', '', $this->id ) ];
-		if ( true === $instance['enqueue_style'] ) {
-			wp_enqueue_style( $this->widget_slug, plugins_url( 'css/widget.min.css', __FILE__ ), [ $this->widget_slug . '-style' ], $this->widget_version );
+		if ( $instance['enqueue_style'] ) {
+			wp_enqueue_style( $this->widget_slug , plugins_url( 'css/widget.min.css', __FILE__ ), $this->widget_version );
       }
 
 	}
 
 }
-add_action( 'widgets_init', function() { register_widget("FPCS_WPCM_Recent_Cars"); } );
+add_action( 'widgets_init', function() {
+   if( function_exists( 'wp_car_manager' ) ) {
+      register_widget("FPCS_WPCM_Recent_Cars");
+   }
+} );

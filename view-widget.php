@@ -1,23 +1,23 @@
 <?php
-$vehicles = get_posts([
+$vehicles = get_posts( [
    'posts_per_page' => $number_cars,
    'offset' => 0,
    'orderby' => 'date',
    'order' => 'DESC',
    'post_type' => 'wpcm_vehicle',
    'post_status' => 'publish'
-]);
+] );
 ?>
 
 <ul class="fpcs-wpcm-rc-list">
 
 <?php
-foreach($vehicles as $vehicle):
-   $thumbnail = get_the_post_thumbnail($vehicle, 'thumbnail');
+foreach( $vehicles as $vehicle ):
+   $thumbnail = get_the_post_thumbnail( $vehicle, 'thumbnail' );
    $title = $vehicle->post_title;
-   $price = get_post_meta($vehicle->ID, 'wpcm_price', true);
-   $mileage = get_post_meta($vehicle->ID, 'wpcm_mileage', true);
-   $permalink = get_permalink($vehicle);
+   $price = Never5\WPCarManager\Helper\Format::price( get_post_meta( $vehicle->ID, 'wpcm_price', true ) );
+   $mileage = Never5\WPCarManager\Helper\Format::mileage( get_post_meta( $vehicle->ID, 'wpcm_mileage', true ) );
+   $permalink = get_permalink( $vehicle );
 ?>
 
    <li>
