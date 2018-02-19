@@ -6,6 +6,11 @@ ul.fpcs-wpcm-rc-list {
 ul.fpcs-wpcm-rc-list li {
    display: block;
    overflow: hidden;
+   margin-bottom: 0.5em;
+}
+ul.fpcs-wpcm-rc-list li .fpcs-wpcm-rc-title {
+   font-weight: bold;
+   font-size: 1.1em;
 }
 ul.fpcs-wpcm-rc-list li .fpcs-wpcm-rc-thumb {
    float: left;

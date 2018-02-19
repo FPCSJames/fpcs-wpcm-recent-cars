@@ -24,7 +24,7 @@ foreach( $vehicles as $vehicle ):
       <a class="fpcs-wpcm-rc-thumb" href="<?php echo $permalink; ?>"><?php echo $thumbnail; ?></a>
       <div class="fpcs-wpcm-rc-title"><a href="<?php echo $permalink; ?>"><?php echo $title; ?></a></div>
       <div class="fpcs-wpcm-rc-attributes">
-         <span class="fpcs-wpcm-rc-mileage"><?php echo $mileage; ?> miles | <span class="fpcs-wpcm-rc-price"><?php echo $price; ?></span>
+         <span class="fpcs-wpcm-rc-mileage"><?php echo $mileage; ?> | <span class="fpcs-wpcm-rc-price"><?php echo $price; ?></span>
          <a href="<?php echo $permalink; ?>">View Listing &raquo;</a>
       </div>
    </li>
